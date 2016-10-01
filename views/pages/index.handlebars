@@ -1,0 +1,38 @@
+<!-- Main Content -->
+<section class="content-wrap">
+
+    <!-- Banner -->
+    <section class="youplay-banner banner-top youplay-banner-parallax">
+        <div class="image" style="background-image: url('/images/civ6-bg.jpg')">
+        </div>
+
+        <div class="info">
+            <div>
+                <div class="container">
+                    <h1>Civilization VI: <br/>Web edition</h1>
+                    <em>v0.1</em>
+                    <br>
+                    <br>
+                    <br>
+                    {{#if playerId}}
+                        <a class="btn btn-lg" href="/game/list">List games</a>
+                        <a class="btn btn-lg" href="/game/create">Create game</a>
+                    {{else}}
+                        <a class="btn btn-lg" href="/user/register">Register</a>
+                        <a class="btn btn-lg" href="/user/login">Login</a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Banner -->
+
+    <!-- Latest News -->
+    <h2 class="container h1">Latest News</h2>
+    <section class="youplay-news container">
+        {{>index/news caption="Early access alpha!" tag="Registration" text="It's now open for registration. Remember to ask your local dealer for the secret password." date="30/10-16"}}
+    </section>
+    <!-- /Latest News -->
+
+</section>
+<!-- /Main Content -->

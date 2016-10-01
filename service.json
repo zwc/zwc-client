@@ -1,0 +1,15 @@
+{
+	"apps" : [
+		{
+			"name"        : "frontend",
+			"script"      : "server.js",
+			"cwd"         : ".",
+			"watch"       : true,
+			"ignore_watch": ".git .idea uploads views public",
+			"env": {
+				"NODE_ENV": "development",
+				"LOG_LEVEL": "info"
+			}
+		}
+	]
+}

@@ -1,0 +1,85 @@
+<section class="content-wrap">
+
+    <!-- Banner -->
+    <section class="youplay-banner youplay-banner-parallax banner-top small">
+        <div class="image" style="background-image: url('/images/civ6-bg.jpg')">
+        </div>
+
+        <div class="info">
+            <div>
+                <div class="container">
+                    <h1>Games</h1>
+                    <em>v0.1</em>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Banner -->
+
+    <div class="container youplay-content">
+        <div class="row">
+            <div class="col-md-9">
+                <div role="tabpanel">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#tab-all" aria-controls="tab-all" role="tab" data-toggle="tab" aria-expanded="true">Open</a>
+                        </li>
+                        <li role="presentation" class="">
+                            <a href="#tab-progress" aria-controls="tab-progress" role="tab" data-toggle="tab" aria-expanded="false">In progress</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+
+                        <!-- All Matches -->
+                        <div role="tabpanel" class="tab-pane active" id="tab-all">
+                            <div class="youplay-matches-list">
+                                {{#open}}
+                                    {{>game/list}}
+                                {{/open}}
+                            </div>
+                        </div>
+                        <!-- /All Matches -->
+
+                        <!-- In Progress -->
+                        <div role="tabpanel" class="tab-pane" id="tab-progress">
+                            <div class="youplay-matches-list">
+                                {{#progress}}
+                                    {{>game/list}}
+                                {{/progress}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="col-md-3">
+
+                <!-- Next Match -->
+                <div class="side-block">
+                    <h4 class="block-title">Current Game</h4>
+                    <div class="block-content">
+                        <a class="youplay-match-widget" href="#">
+                            <h3 class="youplay-match-title">Standard Map</h3>
+                            <div class="date mb-15">27th March 2016, 5:30 pm</div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>bernhard@zwc.se</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>bjorn@druid.net</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- /Next Match -->
+            </div>
+            <!-- Right Side -->
+
+        </div>
+
+    </div>
+
+
+</section>
