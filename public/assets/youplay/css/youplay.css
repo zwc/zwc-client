@@ -3740,6 +3740,8 @@ button, input, select, textarea {
     font-size: inherit; }
   .youplay-banner.xsmall {
     min-height: 350px; }
+  .youplay-banner.xxsmall {
+    min-height: 80px; }
   .youplay-banner.big {
     min-height: 650px; }
   .youplay-banner.full {

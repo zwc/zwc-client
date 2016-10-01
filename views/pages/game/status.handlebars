@@ -9,7 +9,7 @@
             <div>
                 <div class="container">
                     <h1>Game</h1>
-                    <em>{{state}}</em>
+                    <em>{{gameId}}</em>
                 </div>
             </div>
         </div>
@@ -20,8 +20,9 @@
         <div class="row">
             <div class="col-md-6">
                 <h2>Available Civs</h2>
+                {{#data.civs}}
+                <a href="/game/pick/{{../gameId}}/{{name}}" class="angled-bg">
 
-                <a href="#" class="angled-bg">
                     <div class="row">
                         <div class="col-md-3 col-xs-4">
                             <div class="angled-img">
@@ -33,52 +34,62 @@
                         <div class="col-md-9 col-xs-8">
                             <div class="row">
                                 <div class="col-xs-6 col-md-3">
-                                    <h4>China</h4>
+                                    <h4>{{name}}</h4>
                                     <div class="rating">
-                                        Qin Shi Huang
+                                        {{leader}}
                                     </div>
                                 </div>
                                 <div class="col-xs-6 col-md-9 align-right">
                                     <div class="date">
-                                        Allows builder to be used one extra time.<br/><br/>
-                                        <i class="fa fa-tags"></i>  Crouching Tiger Cannon, The Great Wall, Dynastic Cycles.
+                                        {{flavor}}<br/><br/>
+                                        <i class="fa fa-tags"></i> {{unique}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </a>
+                {{/data.civs}}
             </div>
             <div class="col-md-6">
                 <h2>Players</h2>
                 <a href="#" class="angled-bg">
+                    {{#data.status.players}}
                     <div class="row">
                         <div class="col-md-3 col-xs-4">
                             <div class="angled-img">
                                 <div class="img">
                                     <img src="/images/civ6-small.jpg" alt="">
-                                    <div class="badge show-half bg-default">Ready</div>
+                                    <div class="badge show-half bg-default">Not Ready</div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-9 col-xs-8">
                             <div class="row">
                                 <div class="col-xs-6 col-md-9">
-                                    <h4>Japan</h4>
+                                    <h4>{{civ}}</h4>
                                     <div class="tags">
-                                        bernhard@zwc.se
+                                        {{email}}
                                     </div>
                                 </div>
                                 <div class="col-xs-6 col-md-3 align-right">
                                     <div class="date">
-                                        5 seconds ago
+                                        <!--5 seconds ago-->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {{/data.status.players}}
                 </a>
             </div>
         </div>
     </div>
+
+    <div class="container youplay-search">
+        <div class="row">
+            <a class="btn btn-lg" href="/game/play/{{gameId}}">Play</a>
+        </div>
+    </div>
+
 </section>

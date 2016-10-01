@@ -8,6 +8,6 @@ module.exports = (req, res, next) => {
 	const playerId = encoder.decode(cookies.get('playerId'));
 	const gameId = encoder.decode(cookies.get('gameId'));
 	res.locals.playerId = playerId;
-	res.locals.session = gameId;
+	res.locals.gameId = gameId;
 	next();
 };
