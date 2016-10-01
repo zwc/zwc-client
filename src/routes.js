@@ -24,4 +24,7 @@ module.exports = (app) => {
 	app.get('/game/list', game.list);
 	app.get('/game/status/:gameId', game.status);
 	app.get('/game/pick/:gameId/:civ', game.pick);
+	app.get('/game/join/:gameId', game.join);
+	app.get('/game/ready/:gameId', game.ready);
+	app.get('/game/start/:gameId', game.start);
 };

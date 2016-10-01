@@ -60,7 +60,7 @@
                             <div class="angled-img">
                                 <div class="img">
                                     <img src="/images/civ6-small.jpg" alt="">
-                                    <div class="badge show-half bg-default">Not Ready</div>
+                                    {{#if ready}}<div class="badge show bg-green">Ready</div>{{else}}<div class="badge show-half bg-default">Not Ready</div>{{/if}}
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,10 @@
 
     <div class="container youplay-search">
         <div class="row">
-            <a class="btn btn-lg" href="/game/play/{{gameId}}">Play</a>
+            <!-- TODO: remove when you are ready -->
+            <a class="btn btn-lg" href="/game/join/{{gameId}}">Join</a>
+            <a class="btn btn-lg" href="/game/ready/{{gameId}}">Ready</a>
+            <a class="btn btn-lg" href="/game/start/{{gameId}}">Start</a>
         </div>
     </div>
 

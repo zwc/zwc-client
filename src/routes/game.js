@@ -29,7 +29,7 @@ module.exports = {
 	},
 	status: (req, res) => {
 		const playerId = res.locals.playerId;
-		const gameId = res.locals.gameId;
+		const gameId = req.params.gameId;
 
 		H([
 			civs.list(playerId, gameId),
@@ -38,7 +38,6 @@ module.exports = {
 			.merge()
 			.reduce1(Object.assign)
 			.apply(data => {
-				console.log(data.status.players);
 				res.render('pages/game/status', { data, gameId: req.params.gameId });
 			});
 	},
@@ -55,6 +54,31 @@ module.exports = {
 		request(res.locals.playerId, url, (err, data) => {
 			console.log(err, data);
 			res.redirect(`/game/status/${gameId}`);
+		});
+	},
+	ready: (req, res) => {
+		const gameId = req.params.gameId;
+		const civ = req.params.civ;
+		const url  = `http://localhost:2000/game/option/${gameId}/ready/true`;
+		request(res.locals.playerId, url, (err, data) => {
+			res.redirect(`/game/status/${gameId}`);
+		});
+	},
+	join: (req, res) => {
+		const gameId = req.params.gameId;
+		const url  = `http://localhost:2000/game/join/${gameId}`;
+		request(res.locals.playerId, url, (err, data) => {
+			console.log(err, data);
+			res.redirect(`/game/status/${gameId}`);
+		});
+	},
+	start: (req, res) => {
+		const gameId = req.params.gameId;
+		const url  = `http://localhost:1337/engine/lobby/${gameId}`;
+		const cookies = new Cookies(req, res);
+		cookies.set('gameId', encoder.encode(gameId));
+		request(res.locals.playerId, url, (err, data) => {
+			res.redirect(`/game`);
 		});
 	},
 	index: (req, res) => {
