@@ -17,5 +17,8 @@ module.exports = {
 				open, progress
 			});
 		});
+	},
+	status: (req, res) => {
+		res.render('pages/game/status');
 	}
 };

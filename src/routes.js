@@ -18,4 +18,5 @@ module.exports = (app) => {
 	// Game
 	app.get('/game/create', game.create);
 	app.get('/game/list', game.list);
+	app.get('/game/status/:gameId', game.status);
 };
