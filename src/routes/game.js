@@ -4,6 +4,7 @@ const Cookies = require('cookies');
 const request = require('../util/request');
 const encoder = require('../util/encoder');
 
+const maps = require('../services/maps');
 const civs = require('../services/civs');
 const cities = require('../services/cities');
 const units = require('../services/units');
@@ -52,7 +53,6 @@ module.exports = {
 		const civ = req.params.civ;
 		const url  = `http://localhost:2000/game/option/${gameId}/civ/${civ}`;
 		request(res.locals.playerId, url, (err, data) => {
-			console.log(err, data);
 			res.redirect(`/game/status/${gameId}`);
 		});
 	},
@@ -68,7 +68,6 @@ module.exports = {
 		const gameId = req.params.gameId;
 		const url  = `http://localhost:2000/game/join/${gameId}`;
 		request(res.locals.playerId, url, (err, data) => {
-			console.log(err, data);
 			res.redirect(`/game/status/${gameId}`);
 		});
 	},
@@ -86,14 +85,27 @@ module.exports = {
 		const gameId = res.locals.gameId;
 
 		H([
+			maps.local(playerId, gameId),
 			cities.list(playerId, gameId),
 			techs.list(playerId, gameId),
+			techs.available(playerId, gameId),
 			units.list(playerId, gameId),
 			games.status(playerId, gameId)
 		])
 			.merge()
-			//.reduce1(Object.assign)
+			.reduce1(Object.assign)
 			.apply(data => {
+				data.units.forEach(unit => {
+					const x = unit.data.x;
+					const y = unit.data.y;
+					data.local[y][x].unit = unit.data;
+				});
+				data.cities.forEach(city => {
+					const x = city.x;
+					const y = city.y;
+					data.local[y][x].city = city;
+				});
+
 				res.render('pages/game', data);
 			});
 	}

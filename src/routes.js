@@ -5,6 +5,8 @@ const logout = require('./routes/user/logout');
 const register = require('./routes/user/register');
 const settings = require('./routes/user/settings');
 const game = require('./routes/game');
+const unit = require('./routes/unit');
+const tech = require('./routes/tech');
 
 module.exports = (app) => {
 	app.get('/', index.index);
@@ -27,4 +29,11 @@ module.exports = (app) => {
 	app.get('/game/join/:gameId', game.join);
 	app.get('/game/ready/:gameId', game.ready);
 	app.get('/game/start/:gameId', game.start);
+
+	// Unit
+	app.get('/unit/move/:unitId/:x/:y', unit.move);
+	app.get('/unit/found/:unitId', unit.found);
+
+	// Tech
+	app.get('/tech/start/:tech', tech.start);
 };

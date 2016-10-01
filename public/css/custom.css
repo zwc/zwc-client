@@ -3,3 +3,6 @@
  * Type your custom styles
  *
  */
+
+.social-list:nth-child(even) { margin-left: 40px; }
+.map { margin-bottom: 48px; }

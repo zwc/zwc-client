@@ -8,6 +8,5 @@ module.exports = {
 	list: (playerId, gameId) => {
 		return H([{ playerId, url: `${url}/list/${gameId}`}])
 			.flatMap(wrappedRequest)
-			.map(data => ({ units: data }))
 	}
 };

@@ -7,9 +7,7 @@ const url = `http://localhost:2000/game`;
 module.exports = {
 	status: (playerId, gameId) => {
 		return H([{ playerId, url: `${url}/status/${gameId}`}])
-			.tap(H.log)
 			.flatMap(wrappedRequest)
-			.tap(H.log)
 			.map(data => ({ status: data }))
 	}
 };

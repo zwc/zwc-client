@@ -8,7 +8,11 @@ module.exports = {
 	list: (playerId, gameId) => {
 		return H([{ playerId, url: `${url}/list/${gameId}`}])
 			.flatMap(wrappedRequest)
-			.tap(H.log)
 			.map(data => ({ techs: data }))
+	},
+	available: (playerId, gameId) => {
+		return H([{ playerId, url: `${url}/available/${gameId}`}])
+			.flatMap(wrappedRequest)
+			.map(data => ({ available: data }))
 	}
 };
